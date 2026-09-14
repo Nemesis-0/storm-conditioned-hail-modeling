@@ -10,9 +10,9 @@ The goal is to make the assumptions of the analysis explicit and to distinguish 
 
 Let:
 
-- \(S\) denote storm occurrence;
-- \(H\) denote hail occurrence;
-- \(X\) denote environmental and radar predictors.
+- $S$ denote storm occurrence;
+- $H$ denote hail occurrence;
+- $X$ denote environmental and radar predictors.
 
 The central modeling question is whether hail probability is better represented directly as
 
@@ -69,7 +69,7 @@ S = 0, H = 1   hail report not captured by the storm proxy
 S = 0, H = 0   neither storm nor hail
 ```
 
-The \(S=1,H=0\) category is particularly important for estimating hail probability conditional on storm occurrence.
+The $S=1,H=0$ category is particularly important for estimating hail probability conditional on storm occurrence.
 
 ---
 
@@ -219,7 +219,7 @@ $$
 12/15 = 80\%.
 $$
 
-Cells failing radar-coverage requirements are excluded from model evaluation rather than assigned automatically to \(S=0\).
+Cells failing radar-coverage requirements are excluded from model evaluation rather than assigned automatically to $S=0$.
 
 ---
 
@@ -362,9 +362,9 @@ Notebook 05 changes the question from retrospective conditioning to a temporally
 
 Define:
 
-- \(X^-\): predictors whose valid times do not extend beyond \(t_0\);
-- \(S^+\): storm occurrence in the future target window;
-- \(H^+\): hail occurrence in the same future target window.
+- $X^-$: predictors whose valid times do not extend beyond $t_0$;
+- $S^+$: storm occurrence in the future target window;
+- $H^+$: hail occurrence in the same future target window.
 
 The two competing formulations are:
 
@@ -490,7 +490,7 @@ The current experiment should therefore be interpreted as a retrospective develo
 
 ## 19. Pre-origin radar predictors
 
-Three radar predictors are calculated using only data before \(t_0\):
+Three radar predictors are calculated using only data before $t_0$:
 
 ```text
 pre_cmax_dbz
@@ -506,13 +506,13 @@ They represent:
 
 No future-window MRMS information is used as a model predictor.
 
-Future MRMS is used only to define the future storm target \(S^+\).
+Future MRMS is used only to define the future storm target $S^+$.
 
 ---
 
 ## 20. Frozen predictor set
 
-The final same-\(X\) comparison therefore uses nine predictors:
+The final same-$X$ comparison therefore uses nine predictors:
 
 ```text
 cape
@@ -599,7 +599,7 @@ LogisticRegression(
 
 No large hyperparameter search is performed.
 
-The goal is to test the factorization itself under a controlled same-\(X\) comparison rather than optimize model complexity.
+The goal is to test the factorization itself under a controlled same-$X$ comparison rather than optimize model complexity.
 
 ---
 
@@ -812,7 +812,7 @@ rather than as:
 
 ## 34. Current interpretation
 
-Within the corrected event-enriched development panel, the full hierarchy outperforms the same-\(X\) Direct model in pooled:
+Within the corrected event-enriched development panel, the full hierarchy outperforms the same-$X$ Direct model in pooled:
 
 - PR-AUC;
 - ROC-AUC;
@@ -848,7 +848,7 @@ These limitations constrain the strength of scientific conclusions.
 
 The next major experiment should use a broad panel constructed independently of hail occurrence.
 
-At each forecast origin \(t_0\):
+At each forecast origin $t_0$:
 
 ```text
 X^-  = information available no later than t0
