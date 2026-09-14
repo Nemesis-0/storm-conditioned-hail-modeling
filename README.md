@@ -59,6 +59,14 @@ $$
 
 case rather than treating arbitrary non-report locations as equivalent to non-hail storms.
 
+### Storm-label construction
+
+Future storm occurrence is defined independently from hail reports using MRMS `MergedReflectivityQCComposite_00.50`.
+
+A nominal 0.25° grid cell is classified as storm-positive when radar coverage is sufficient and reflectivity of at least 35 dBZ occupies at least 10% of the full 625-pixel cell for at least 5 scans. Both `-99` and `-999` MRMS sentinel values are treated as missing, with at least 80% fine-pixel coverage and 80% usable scans required.
+
+These thresholds were fixed during storm-proxy development rather than selected to maximize downstream Direct-versus-Hierarchical model performance. Full details and sensitivity checks are documented in `docs/methodology.md` and Notebook 02.
+
 ## Study design
 
 The final development experiment is a **temporally ordered retrospective pilot**, not an operational forecasting validation.
