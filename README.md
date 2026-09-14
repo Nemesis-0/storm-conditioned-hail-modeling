@@ -8,9 +8,9 @@ The project develops a storm-first sample frame using MRMS radar, overlays NOAA 
 
 Let
 
-- $X^-$ denote predictors whose valid times do not extend beyond a forecast origin $t_0$;
-- $S^+$ denote radar-defined storm occurrence in a future target window;
-- $H^+$ denote observed hail occurrence in the same future window.
+- X⁻ denote predictors whose valid times do not extend beyond a forecast origin t₀;
+- S⁺ denote radar-defined storm occurrence in a future target window;
+- H⁺ denote observed hail occurrence in the same future window.
 
 The direct formulation is
 
@@ -79,7 +79,7 @@ The predictor set is frozen at nine variables:
 - 850–500-hPa shear
 - 850–300-hPa shear
 
-**Pre-$t_0$ MRMS radar predictors**
+**Pre-t₀ MRMS radar predictors**
 
 - maximum composite reflectivity
 - number of scans with at least 5% high-reflectivity area
@@ -91,7 +91,7 @@ The direct and hierarchical formulations use:
 - the same held-out rows;
 - the same logistic-regression learner;
 - leave-one-period-out validation;
-- no post-$t_0$ predictor information.
+- no post-t₀ predictor information.
 
 ERA5 fields are aligned by valid time but are retrospective reanalysis products, so this experiment should not be interpreted as demonstrating operational real-time forecast performance.
 
@@ -130,7 +130,7 @@ Pooled leave-one-period-out results are:
 | 45/30 | Direct | 0.0519 | 0.5977 | 0.04087 | 0.17334 |
 | 45/30 | Hierarchical | **0.0931** | **0.6830** | **0.03525** | **0.15273** |
 
-The corrected hierarchical formulation has better pooled PR-AUC, ROC-AUC, Brier score, and log loss than the same-$X$ direct model in both timing regimes.
+The corrected hierarchical formulation has better pooled PR-AUC, ROC-AUC, Brier score, and log loss than the same-X direct model in both timing regimes.
 
 The discrimination gains are larger in point estimate under 45/30, but this should be treated descriptively rather than as a confirmed timing effect because the two regimes have different radar-coverage-eligible samples and only 8–9 hail-positive cells.
 
@@ -220,7 +220,7 @@ $$
 \text{NOAA hail overlay}.
 $$
 
-This notebook establishes the core storm / hail contingency structure and produces explicit $S=1,H=0$ examples.
+This notebook establishes the core storm / hail contingency structure and produces explicit S=1, H=0 examples.
 
 ### `04_direct_vs_storm_conditioned_modeling.ipynb`
 
@@ -247,7 +247,7 @@ It includes:
 - cross-midnight MRMS window correction;
 - corrected full-cell radar support;
 - future storm and hail construction;
-- same-$X$ Direct versus Hierarchical comparison;
+- same-X Direct versus Hierarchical comparison;
 - leave-one-period-out evaluation;
 - period-cluster bootstrap;
 - stage-specific diagnostics;
@@ -306,7 +306,7 @@ The notebooks expect the local data structure described in `data/README.md`.
 
 Notebook 05 has been verified from a clean kernel using the complete local development inputs before its final outputs were frozen.
 
-The analysis intentionally uses simple logistic models rather than extensive algorithm or hyperparameter search. The purpose is to test the scientific factorization under a controlled same-$X$ comparison, not to maximize leaderboard performance.
+The analysis intentionally uses simple logistic models rather than extensive algorithm or hyperparameter search. The purpose is to test the scientific factorization under a controlled same-X comparison, not to maximize leaderboard performance.
 
 ## Limitations
 
@@ -322,7 +322,7 @@ Important limitations include:
 - limited conditional-hail sample size for Stage 2;
 - no representative broad-population calibration analysis yet.
 
-The next major scientific step is to evaluate both formulations on the same broad, hail-independent representative panel while preserving the storm-first sample construction and pre-$t_0$ information constraints.
+The next major scientific step is to evaluate both formulations on the same broad, hail-independent representative panel while preserving the storm-first sample construction and pre-t₀ information constraints.
 
 ## Research scope and acknowledgment
 
