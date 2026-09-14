@@ -10,24 +10,22 @@ The goal is to make the assumptions of the analysis explicit and to distinguish 
 
 Let:
 
-- $S$ denote storm occurrence;
-- $H$ denote hail occurrence;
-- $X$ denote environmental and radar predictors.
+- S denote storm occurrence;
+- H denote hail occurrence;
+- X denote environmental and radar predictors.
 
 The central modeling question is whether hail probability is better represented directly as
 
-$$
+```math
 P(H=1\mid X)
-$$
-
+```
 or hierarchically as
 
-$$
+```math
 P(S=1\mid X)
 \times
 P(H=1\mid S=1,X).
-$$
-
+```
 The hierarchy is not assumed to be superior.
 
 The scientific purpose is to determine where predictive information enters the storm-to-hail process.
@@ -69,7 +67,7 @@ S = 0, H = 1   hail report not captured by the storm proxy
 S = 0, H = 0   neither storm nor hail
 ```
 
-The $S=1,H=0$ category is particularly important for estimating hail probability conditional on storm occurrence.
+The S=1, H=0 category is particularly important for estimating hail probability conditional on storm occurrence.
 
 ---
 
@@ -126,18 +124,16 @@ This prevents missing fine pixels from artificially increasing the apparent frac
 
 For a coarse cell to be usable within an individual radar scan, at least:
 
-$$
+```math
 80\%
-$$
-
+```
 of its nominal 625 fine pixels must contain valid MRMS values.
 
 Equivalently:
 
-$$
+```math
 \frac{N_{\text{valid fine pixels}}}{625} \ge 0.80.
-$$
-
+```
 Scans failing this criterion are not counted as usable scans for that grid cell.
 
 ---
@@ -146,10 +142,9 @@ Scans failing this criterion are not counted as usable scans for that grid cell.
 
 Convective reflectivity support is defined using:
 
-$$
+```math
 Z \ge 35\ \text{dBZ}.
-$$
-
+```
 The 35-dBZ value is treated as a **literature-informed operational proxy**, not as a universal physical boundary between storm and non-storm conditions.
 
 Threshold sensitivity was examined during storm-proxy development rather than selected to maximize downstream model performance.
@@ -160,7 +155,7 @@ Threshold sensitivity was examined during storm-proxy development rather than se
 
 For each usable scan and coarse grid cell, define:
 
-$$
+```math
 A_{35}
 =
 \frac{
@@ -168,14 +163,12 @@ N(\text{fine pixels with } Z\ge35\text{ dBZ})
 }{
 625
 }.
-$$
-
+```
 A scan provides strong convective spatial support when:
 
-$$
+```math
 A_{35}\ge0.10.
-$$
-
+```
 Thus, at least 10% of the full nominal coarse cell must exceed 35 dBZ.
 
 ---
@@ -205,21 +198,19 @@ A grid cell must also have sufficient temporal radar coverage.
 
 At least:
 
-$$
+```math
 80\%
-$$
-
+```
 of the expected scans in the window must be usable.
 
 For the final development windows, 15 scans are expected.
 
 The minimum usable-scan requirement is therefore:
 
-$$
+```math
 12/15 = 80\%.
-$$
-
-Cells failing radar-coverage requirements are excluded from model evaluation rather than assigned automatically to $S=0$.
+```
+Cells failing radar-coverage requirements are excluded from model evaluation rather than assigned automatically to S=0.
 
 ---
 
@@ -248,16 +239,14 @@ Hail labels are overlaid only after the MRMS storm state has been defined.
 
 For the temporally aligned experiment, a grid cell receives:
 
-$$
+```math
 H^+=1
-$$
-
+```
 when at least one qualifying hail report occurs within the corresponding spatial cell and strictly inside the future target interval:
 
-$$
+```math
 (t_0,\ t_0+30\text{ min}].
-$$
-
+```
 The future interval excludes the forecast-origin instant itself and includes the ending timestamp.
 
 ---
@@ -268,10 +257,9 @@ Hail-positive cells are never silently removed because the radar storm proxy fai
 
 The analysis explicitly tracks:
 
-$$
+```math
 H=1,S=0.
-$$
-
+```
 This quantity is needed to determine whether conditioning on the radar-defined storm state structurally excludes genuine hail observations.
 
 In the final eligible Notebook 05 development panel:
@@ -362,26 +350,24 @@ Notebook 05 changes the question from retrospective conditioning to a temporally
 
 Define:
 
-- $X^-$: predictors whose valid times do not extend beyond $t_0$;
-- $S^+$: storm occurrence in the future target window;
-- $H^+$: hail occurrence in the same future target window.
+- X⁻: predictors whose valid times do not extend beyond t₀;
+- S⁺: storm occurrence in the future target window;
+- H⁺: hail occurrence in the same future target window.
 
 The two competing formulations are:
 
 ### Direct
 
-$$
+```math
 P(H^+=1\mid X^-)
-$$
-
+```
 ### Hierarchical
 
-$$
+```math
 P(S^+=1\mid X^-)
 \times
 P(H^+=1\mid S^+=1,X^-).
-$$
-
+```
 The comparison therefore asks whether explicitly representing future storm occurrence provides useful predictive structure for future hail probability.
 
 ---
@@ -394,44 +380,38 @@ Two pre-specified timing regimes are evaluated.
 
 Pre-origin predictor window:
 
-$$
+```math
 [\text{start},\ \text{start}+30\text{ min})
-$$
-
+```
 Forecast origin:
 
-$$
+```math
 t_0=\text{start}+30\text{ min}
-$$
-
+```
 Future target window:
 
-$$
+```math
 (t_0,\ t_0+30\text{ min}].
-$$
-
+```
 ---
 
 ### 16.2 45/30 regime
 
 Pre-origin predictor window:
 
-$$
+```math
 [\text{start}+15\text{ min},\ \text{start}+45\text{ min})
-$$
-
+```
 Forecast origin:
 
-$$
+```math
 t_0=\text{start}+45\text{ min}
-$$
-
+```
 Future target window:
 
-$$
+```math
 (t_0,\ t_0+30\text{ min}].
-$$
-
+```
 The larger point-estimate gains observed under 45/30 are treated descriptively.
 
 The current sample is too small to establish a definitive timing effect.
@@ -490,7 +470,7 @@ The current experiment should therefore be interpreted as a retrospective develo
 
 ## 19. Pre-origin radar predictors
 
-Three radar predictors are calculated using only data before $t_0$:
+Three radar predictors are calculated using only data before t₀:
 
 ```text
 pre_cmax_dbz
@@ -506,13 +486,13 @@ They represent:
 
 No future-window MRMS information is used as a model predictor.
 
-Future MRMS is used only to define the future storm target $S^+$.
+Future MRMS is used only to define the future storm target S⁺.
 
 ---
 
 ## 20. Frozen predictor set
 
-The final same-$X$ comparison therefore uses nine predictors:
+The final same-X comparison therefore uses nine predictors:
 
 ```text
 cape
@@ -599,7 +579,7 @@ LogisticRegression(
 
 No large hyperparameter search is performed.
 
-The goal is to test the factorization itself under a controlled same-$X$ comparison rather than optimize model complexity.
+The goal is to test the factorization itself under a controlled same-X comparison rather than optimize model complexity.
 
 ---
 
@@ -607,12 +587,11 @@ The goal is to test the factorization itself under a controlled same-$X$ compari
 
 The Direct model estimates:
 
-$$
+```math
 \hat p_D
 =
 P(H^+=1\mid X^-).
-$$
-
+```
 It is trained using all eligible training rows.
 
 ---
@@ -621,12 +600,11 @@ It is trained using all eligible training rows.
 
 Stage 1 estimates:
 
-$$
+```math
 \hat p_S
 =
 P(S^+=1\mid X^-).
-$$
-
+```
 It is trained using all eligible training rows.
 
 ---
@@ -635,18 +613,16 @@ It is trained using all eligible training rows.
 
 Stage 2 estimates:
 
-$$
+```math
 \hat p_{H\mid S}
 =
 P(H^+=1\mid S^+=1,X^-).
-$$
-
+```
 Training is restricted to rows satisfying:
 
-$$
+```math
 S^+=1.
-$$
-
+```
 At prediction time, the fitted Stage-2 model produces conditional hail probabilities for all held-out rows so that the soft hierarchical product can be calculated.
 
 ---
@@ -655,14 +631,13 @@ At prediction time, the fitted Stage-2 model produces conditional hail probabili
 
 The final hierarchical probability is:
 
-$$
+```math
 \hat p_H
 =
 \hat p_S
 \times
 \hat p_{H\mid S}.
-$$
-
+```
 This is a **soft probabilistic hierarchy**.
 
 A held-out row is not assigned zero hail probability simply because Stage 1 predicts storm probability below an arbitrary classification threshold.
@@ -812,7 +787,7 @@ rather than as:
 
 ## 34. Current interpretation
 
-Within the corrected event-enriched development panel, the full hierarchy outperforms the same-$X$ Direct model in pooled:
+Within the corrected event-enriched development panel, the full hierarchy outperforms the same-X Direct model in pooled:
 
 - PR-AUC;
 - ROC-AUC;
@@ -848,7 +823,7 @@ These limitations constrain the strength of scientific conclusions.
 
 The next major experiment should use a broad panel constructed independently of hail occurrence.
 
-At each forecast origin $t_0$:
+At each forecast origin t₀:
 
 ```text
 X^-  = information available no later than t0
@@ -858,17 +833,15 @@ H+   = hail occurrence in (t0, t0+30 min]
 
 The final comparison should evaluate:
 
-$$
+```math
 P(H^+\mid X^-)
-$$
-
+```
 against:
 
-$$
+```math
 P(S^+\mid X^-)
 P(H^+\mid S^+,X^-)
-$$
-
+```
 on the same representative held-out population.
 
 Stage 2 may still be developed using storm-enriched data, but final evaluation and calibration should use naturally occurring storms from the representative panel.
