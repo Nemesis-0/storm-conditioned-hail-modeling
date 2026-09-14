@@ -1,0 +1,4 @@
+period_id,coverage_eligible_grid_hours,storm_samples,S1_H1,S1_H0,hail_fraction_given_storm,S0_H1
+active_20240418,58,45,2,43,0.044444444444444446,0
+active_20240508,54,40,4,36,0.1,0
+active_20240526,57,38,7,31,0.18421052631578946,0

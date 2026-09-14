@@ -1,0 +1,5 @@
+period_id,primary_validation_period,hail_positive_cells,coverage_eligible_hail_cells,moderate_captured,strict_captured,very_strict_captured,strict_H1_S0,strict_capture_rate
+active_20240331,False,3,1,1,1,1,0,1.0
+active_20240418,True,4,2,2,2,2,0,1.0
+active_20240508,True,4,4,4,4,4,0,1.0
+active_20240526,True,8,7,7,7,6,0,1.0

@@ -1,0 +1,155 @@
+# ------------------------------------------------------------
+# macOS / system files
+# ------------------------------------------------------------
+
+.DS_Store
+Thumbs.db
+
+
+# ------------------------------------------------------------
+# Python
+# ------------------------------------------------------------
+
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+
+# ------------------------------------------------------------
+# Jupyter
+# ------------------------------------------------------------
+
+.ipynb_checkpoints/
+
+
+# ------------------------------------------------------------
+# Virtual environments
+# ------------------------------------------------------------
+
+.venv/
+venv/
+env/
+ENV/
+
+
+# ------------------------------------------------------------
+# IDE / editor files
+# ------------------------------------------------------------
+
+.vscode/
+.idea/
+
+*.swp
+*.swo
+*~
+
+
+# ------------------------------------------------------------
+# Environment variables / credentials
+# ------------------------------------------------------------
+
+.env
+.env.*
+!.env.example
+
+*.key
+*.pem
+credentials.json
+secrets.json
+
+
+# ------------------------------------------------------------
+# Raw meteorological data
+#
+# Large source datasets are local-only and are documented in
+# data/README.md.
+# ------------------------------------------------------------
+
+*.grib2
+*.grib2.gz
+*.grb
+*.grb2
+*.nc
+*.nc4
+
+
+# ------------------------------------------------------------
+# Local data directories / symlinks
+#
+# Keep data/README.md public while excluding local raw-data
+# trees and links used by the notebooks.
+# ------------------------------------------------------------
+
+data/hail_records
+data/mrms
+data/era5
+data/summer_pipeline
+
+
+# ------------------------------------------------------------
+# Temporary decompression / extraction artifacts
+# ------------------------------------------------------------
+
+*.tmp
+*.temp
+*.part
+
+tmp/
+temp/
+cache/
+.cache/
+
+
+# ------------------------------------------------------------
+# Logs
+# ------------------------------------------------------------
+
+*.log
+
+
+# ------------------------------------------------------------
+# Large or accidental serialized objects
+# ------------------------------------------------------------
+
+*.pkl
+*.pickle
+*.joblib
+*.npy
+*.npz
+
+
+# ------------------------------------------------------------
+# Notebook exports / local scratch files
+# ------------------------------------------------------------
+
+*.nbconvert.ipynb
+*_checkpoint.ipynb
+
+scratch/
+sandbox/
+
+
+# ------------------------------------------------------------
+# Keep derived public research outputs
+#
+# outputs/tables/ is intentionally NOT ignored.
+# ------------------------------------------------------------
+
+# If figures are generated locally but are not part of the
+# public artifact, uncomment the following line:
+#
+# outputs/figures/
+
+
+# ------------------------------------------------------------
+# Keep repository documentation explicitly
+# ------------------------------------------------------------
+
+!data/README.md
+!README.md
+!requirements.txt

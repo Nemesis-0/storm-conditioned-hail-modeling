@@ -1,0 +1,7 @@
+active_period_id,rule,active_eligible_cells,active_candidate_cells,active_candidate_fraction,control_period_id,control_eligible_cells,control_candidate_cells,control_candidate_fraction
+active_20240418,moderate,58,47,0.8103448275862069,active_20240418_rank2,71,11,0.15492957746478872
+active_20240418,strict,58,45,0.7758620689655172,active_20240418_rank2,71,9,0.1267605633802817
+active_20240418,very_strict,58,38,0.6551724137931034,active_20240418_rank2,71,7,0.09859154929577464
+active_20240508,moderate,54,43,0.7962962962962963,active_20240508_rank9,97,0,0.0
+active_20240508,strict,54,40,0.7407407407407407,active_20240508_rank9,97,0,0.0
+active_20240508,very_strict,54,31,0.5740740740740741,active_20240508_rank9,97,0,0.0

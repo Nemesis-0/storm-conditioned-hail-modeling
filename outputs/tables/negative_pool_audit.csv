@@ -1,0 +1,4 @@
+test_period,hail_positive,storm_negative_pool,background_negative_pool,sampled_negatives_per_arm,sample_prevalence,target_storm_prevalence
+active_20240418,11,67,33,33,0.25,0.14102564102564102
+active_20240508,9,74,32,32,0.21951219512195122,0.10843373493975904
+active_20240526,6,79,27,27,0.18181818181818182,0.07058823529411765
